@@ -47,7 +47,7 @@ publishing {
 
 pluginBundle {
     website = 'https://github.com/damianszczepanik/cucumber-reporting'
-    vcsUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
+    vcsUrl = 'https://github.com/alfa-laboratory/cucumber-reporting-gradle-plugin'
     tags = ['cucumber', 'java', 'groovy', 'testing', 'code quality',
             'quality', 'tool', 'reporting']
 
@@ -89,8 +89,8 @@ bintray {
         name = 'cucumber-reporting-gradle-plugin'
         desc = project.description
         websiteUrl = 'https://github.com/damianszczepanik/cucumber-reporting'
-        issueTrackerUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
-        vcsUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
+        issueTrackerUrl = 'https://github.com/alfa-laboratory/cucumber-reporting-gradle-plugin'
+        vcsUrl = 'https://github.com/alfa-laboratory/cucumber-reporting-gradle-plugin'
         licenses = ['Apache-2.0']
         labels = ['cucumber', 'reporting', 'gradle', 'nebula']
         publicDownloadNumbers = true

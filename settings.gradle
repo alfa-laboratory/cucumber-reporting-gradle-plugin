@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'gradle-cucumber-reporting-plugin'
+rootProject.name = 'cucumber-reporting-gradle-plugin'
