@@ -17,7 +17,7 @@ repositories {
 description 'Cucumber Reporting gradle plugin'
 
 apply plugin: 'groovy'
-apply plugin: "com.gradle.plugin-publish"
+//apply plugin: "com.gradle.plugin-publish"
 apply plugin: 'nebula.plugin-plugin'
 
 group = 'ru.alfalab.gradle'
