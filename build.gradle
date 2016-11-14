@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.netflix.nebula:nebula-plugin-plugin:4.24.2'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
     }
 }
 
@@ -17,6 +18,8 @@ description 'Cucumber Reporting gradle plugin'
 
 apply plugin: 'groovy'
 apply plugin: 'nebula.plugin-plugin'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 group = 'ru.alfalab.gradle'
 
@@ -33,6 +36,14 @@ dependencies {
     compile 'net.masterthought:cucumber-reporting:3.2.0'
 
     testCompile 'com.netflix.nebula:nebula-test:4.2.2'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
 
 publishing {
