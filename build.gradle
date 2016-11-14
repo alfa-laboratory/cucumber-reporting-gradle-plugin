@@ -15,8 +15,6 @@ repositories {
 
 description 'Cucumber Reporting gradle plugin'
 
-apply plugin: 'application'
-apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'nebula.plugin-plugin'
 
