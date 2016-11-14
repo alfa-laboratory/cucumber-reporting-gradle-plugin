@@ -69,7 +69,7 @@ bintray {
     publish = true
     pkg {
         userOrg = 'alfa-laboratory'
-        repo = 'cucumber-reporting-gradle-plugin'
+        repo = 'gradle-plugins'
         name = 'cucumber-reporting-gradle-plugin'
         desc = project.description
         websiteUrl = 'https://github.com/damianszczepanik/cucumber-reporting'
