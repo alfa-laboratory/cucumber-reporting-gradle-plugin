@@ -1,0 +1,108 @@
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.netflix.nebula:nebula-plugin-plugin:4.24.2'
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.6'
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+description 'Cucumber Reporting gradle plugin'
+
+apply plugin: 'groovy'
+apply plugin: "com.gradle.plugin-publish"
+apply plugin: 'nebula.plugin-plugin'
+
+group = 'ru.alfalab.gradle'
+
+contacts {
+    'aatarasoff@gmail.com' {
+        moniker 'Tarasov Aleksandr'
+        github 'aatarasoff'
+    }
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'net.masterthought:cucumber-reporting:3.2.0'
+
+    testCompile 'com.netflix.nebula:nebula-test:4.2.2'
+}
+
+publishing {
+    publications {
+        pluginArtifact(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/damianszczepanik/cucumber-reporting'
+    vcsUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
+    tags = ['cucumber', 'java', 'groovy', 'testing', 'code quality',
+            'quality', 'tool', 'reporting']
+
+    plugins {
+        cucumberReportingPlugin {
+            id = 'ru.alfalab.cucumber-reporting'
+            displayName = 'Gradle Cucumber reporting plugin'
+        }
+    }
+}
+
+artifactory {
+    contextUrl = project.findProperty('artifactory_contextUrl')
+
+    publish {
+        repository {
+            username = project.findProperty('artifactory_user')
+            password = project.findProperty('artifactory_password')
+            maven = true
+        }
+
+        defaults {
+            publications('nebula')
+            publishArtifacts = true
+        }
+    }
+}
+
+bintray {
+    user = project.findProperty('bintrayUser')
+    key = project.findProperty('bintrayKey')
+
+    publications = ['nebula']
+    dryRun = false
+    publish = true
+    pkg {
+        userOrg = 'alfa-laboratory'
+        repo = 'cucumber-reporting-gradle-plugin'
+        name = 'cucumber-reporting-gradle-plugin'
+        desc = project.description
+        websiteUrl = 'https://github.com/damianszczepanik/cucumber-reporting'
+        issueTrackerUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
+        vcsUrl = 'https://github.com/alfa-laboratory/gradle-cucumber-reporting-plugin'
+        licenses = ['Apache-2.0']
+        labels = ['cucumber', 'reporting', 'gradle', 'nebula']
+        publicDownloadNumbers = true
+        attributes = [:]
+        version {
+            name = project.version
+            vcsTag = project.version
+            attributes = [:]
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
