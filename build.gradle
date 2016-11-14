@@ -5,7 +5,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.netflix.nebula:nebula-plugin-plugin:4.24.2'
-        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.6'
     }
 }
 
@@ -17,7 +16,6 @@ repositories {
 description 'Cucumber Reporting gradle plugin'
 
 apply plugin: 'groovy'
-apply plugin: "com.gradle.plugin-publish"
 apply plugin: 'nebula.plugin-plugin'
 
 group = 'ru.alfalab.gradle'
@@ -41,20 +39,6 @@ publishing {
     publications {
         pluginArtifact(MavenPublication) {
             from components.java
-        }
-    }
-}
-
-pluginBundle {
-    website = 'https://github.com/damianszczepanik/cucumber-reporting'
-    vcsUrl = 'https://github.com/alfa-laboratory/cucumber-reporting-gradle-plugin'
-    tags = ['cucumber', 'java', 'groovy', 'testing', 'code quality',
-            'quality', 'tool', 'reporting']
-
-    plugins {
-        cucumberReportingPlugin {
-            id = 'ru.alfalab.cucumber-reporting'
-            displayName = 'Gradle Cucumber reporting plugin'
         }
     }
 }
