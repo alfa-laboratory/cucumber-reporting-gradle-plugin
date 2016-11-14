@@ -2,6 +2,10 @@
 
 Gradle plugin for Cucumber reporting tool [Cucumber Reporting](https://github.com/damianszczepanik/cucumber-reporting)
 
+## Project quality
+
+[![Build Status](https://travis-ci.org/alfa-laboratory/cucumber-reporting-gradle-plugin.svg?branch=master)](https://travis-ci.org/alfa-laboratory/cucumber-reporting-gradle-plugin)
+
 ## Usage
 
 ### Applying the Plugin
