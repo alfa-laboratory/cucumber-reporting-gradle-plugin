@@ -1,4 +1,4 @@
-# gradle-cucumber-reporting-plugin
+# cucumber-reporting-gradle-plugin
 
 Gradle plugin for Cucumber reporting tool [Cucumber Reporting](https://github.com/damianszczepanik/cucumber-reporting)
 
