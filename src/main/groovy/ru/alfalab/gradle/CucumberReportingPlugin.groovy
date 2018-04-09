@@ -28,7 +28,7 @@ class CucumberReportingPlugin implements Plugin<Project> {
             type: CucumberReportingTask,
             group: 'Documentation',
             description: 'Generate Cucumber report after tests execution',
-            dependsOn: 'test'
+            dependsOn: 'runCukes'
         ) as CucumberReportingTask
 
         afterEvaluate {
