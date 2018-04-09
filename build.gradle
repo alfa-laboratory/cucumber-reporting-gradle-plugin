@@ -30,7 +30,7 @@ contacts {
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'net.masterthought:cucumber-reporting:3.2.0'
+    compile 'net.masterthought:cucumber-reporting:3.16.0'
 
     testCompile 'com.netflix.nebula:nebula-test:4.2.2'
 }
@@ -93,4 +93,18 @@ bintray {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14'
+}
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: System.properties['gradle.mavenRepo']) {
+                authentication(userName: System.properties['gradle.mavenUser'], password: System.properties['gradle.mavenPass'])
+            }
+            pom.version = "0.3.0"
+            pom.artifactId = "cucumber-reporting-gradle-plugin"
+            pom.groupId = "ru.alfalab.gradle"
+        }
+    }
 }

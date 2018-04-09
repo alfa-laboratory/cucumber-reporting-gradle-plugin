@@ -22,6 +22,20 @@ To include, add the following to your build.gradle
     }
 
     apply plugin: 'ru.alfalab.cucumber-reporting'
+    
+    // To stop long running bdd tasks running as part of the test task.
+    test {
+        exclude '**/*'
+    }
+    // Change the bdd task to be runCukes for explicit invocation.
+    task runCukes(type: Test) {
+        jacoco {
+            enabled = false
+        }
+        testLogging.showStandardStreams = true
+    }
+    
+    runCukes.finalizedBy(generateCucumberReport)
 
 ### Tasks Provided
 
@@ -40,10 +54,10 @@ Reports can be found in dir ${project.buildDir}/reports/cucumber/
 
 ### Test
 
-Run `./gradlew test` an see results in console output or follow to `./build/test/`
+Run `./gradlew runCukes` an see results in console output or follow to `./build/test/`
 This directory contain integration tests and their data.
 
 ### Build and publish
 
 1. `./gradlew build` build
-2. `./gradlew pTML` publish to maven local
+2. `./gradlew upload` publish to maven remote repo
